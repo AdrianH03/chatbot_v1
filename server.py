@@ -1,10 +1,13 @@
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageContext, load_index_from_storage
 from dotenv import load_dotenv
 import os
-
+import openai
 from pydantic import BaseModel
 import uvicorn
 from fastapi import FastAPI
+
+class Query(BaseModel):
+    question: "str"
 
 class Item(BaseModel):
     question: str
